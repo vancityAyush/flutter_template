@@ -34,6 +34,7 @@ dependencies:
   intl: ^0.17.0
   devicelocale: ^0.6.0
   permission_handler: ^10.2.0
+  flutter_svg: ^2.0.5
 
 
 dev_dependencies:
@@ -45,7 +46,24 @@ dev_dependencies:
   flutter_gen_runner:
 
 
+flutter_gen:
+    output: lib/gen/
+    line_length: 80
 
+    integrations:
+      flutter_svg: true
+      flare_flutter: true
+      rive: true
+      lottie: true
+
+    fonts:
+      outputs:
+        class_name: Fonts
+    colors:
+      outputs:
+        class_name: AppColors
+      inputs:
+        - assets/colors/colors.xml
 
 flutter:
   uses-material-design: true
@@ -54,6 +72,7 @@ flutter:
         - assets/images/
         - assets/icons/
         - assets/fonts/
+        - assets/colors/
 
   fonts:
     - family: Montserrat
