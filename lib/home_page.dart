@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/gen/colors.gen.dart';
-import 'package:flutter_template/gen/fonts.gen.dart';
+import 'package:flutter_template/util/auth/OAuthService.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,11 +23,12 @@ class HomePage extends StatelessWidget {
           //   fit: BoxFit.contain,
           // ),
         ),
-        child: Text('Hello World',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20.sp,
-              fontFamily: Fonts.montserrat,
+        child: ElevatedButton(
+            onPressed: () {
+              OAuthService.instance.signInWithGoogle();
+            },
+            child: Text(
+              'login'.tr(),
             )),
       ),
     );
