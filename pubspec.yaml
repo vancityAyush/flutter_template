@@ -32,7 +32,6 @@ dependencies:
   flutter_screenutil: ^5.7.0
   easy_localization: ^3.0.1
   intl: ^0.17.0
-  devicelocale: ^0.6.0
   permission_handler: ^10.2.0
   flutter_svg: ^2.0.5
 
