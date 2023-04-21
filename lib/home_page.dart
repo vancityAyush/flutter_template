@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         width: 350.w,
         height: 0.5.sh,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.gray410,
           // image: DecorationImage(
           //   image: Assets.images.tif.provider(),
@@ -24,8 +24,11 @@ class HomePage extends StatelessWidget {
           // ),
         ),
         child: ElevatedButton(
-            onPressed: () {
-              OAuthService.instance.signInWithGoogle();
+            onPressed: () async {
+              await OAuthService.instance.signInWithGoogle().then((value) =>
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(value.toString()),
+                  )));
             },
             child: Text(
               'login'.tr(),

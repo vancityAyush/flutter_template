@@ -2,15 +2,22 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class OAuthService {
   static OAuthService? _instance;
+
   static OAuthService get instance => _instance ??= OAuthService._init();
+
   OAuthService._init();
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(
-    clientId:
-        "519403999623-5508ivut30erc7r9tpin0vg9sd22bham.apps.googleusercontent.com",
+    scopes: <String>[
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+    ],
+    serverClientId:
+        "923737583384-nb432n2nbpvb76fs4vhicq8uejf00utq.apps.googleusercontent.com",
   );
 
-  signInWithGoogle() async {
+  Future<dynamic> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
@@ -18,12 +25,15 @@ class OAuthService {
             await googleUser.authentication;
         GoogleSignInAccount? account = _googleSignIn.currentUser;
         final String? authCode = account!.serverAuthCode;
+
         print(authCode);
+        return authCode;
         // Handle successful sign-in and auth code retrieval
       }
     } catch (error) {
       // Handle sign-in errors
       print(error);
+      return error;
     }
   }
 

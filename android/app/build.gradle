@@ -56,10 +56,10 @@ android {
 
     signingConfigs {
         debug{
-            keyAlias 'debugKey'
-            keyPassword '12345677'
-            storeFile file('mykey.jks')
-            storePassword '12345677'
+            keyAlias 'debug'
+            keyPassword 'debugKey'
+            storeFile file('debug.jks')
+            storePassword 'debugKey'
 
 
         }
