@@ -1,5 +1,7 @@
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../constants.dart';
+
 class OAuthService {
   static OAuthService? _instance;
 
@@ -13,8 +15,7 @@ class OAuthService {
       "https://www.googleapis.com/auth/userinfo.email",
       "openid",
     ],
-    serverClientId:
-        "923737583384-nb432n2nbpvb76fs4vhicq8uejf00utq.apps.googleusercontent.com",
+    serverClientId: GOOGLE_SERVER_CLIENT_ID,
   );
 
   Future<dynamic> signInWithGoogle() async {

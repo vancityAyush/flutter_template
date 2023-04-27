@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import './home_page.dart';
+import 'package:flutter_template/modules/login/login_phone.dart';
+import 'package:flutter_template/util/config/environment.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Environment.init(EnvironmentType.dev);
+  await initHiveForFlutter();
   runApp(
     EasyLocalization(
         supportedLocales: const [
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const HomePage(),
+      child: LoginPhone(),
     );
   }
 }

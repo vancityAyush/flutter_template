@@ -13,7 +13,7 @@ class Environment {
   final String baseUrl;
   final EnvironmentType envType;
 
-  static void init(EnvironmentType env) async {
+  static Future<void> init(EnvironmentType env) async {
     String contents;
     switch (env) {
       case EnvironmentType.dev:

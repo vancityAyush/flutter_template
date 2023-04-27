@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/gen/colors.gen.dart';
-import 'package:flutter_template/util/auth/OAuthService.dart';
+import 'package:flutter_template/util/auth/starva_oauth.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,10 +25,11 @@ class HomePage extends StatelessWidget {
         ),
         child: ElevatedButton(
             onPressed: () async {
-              await OAuthService.instance.signInWithGoogle().then((value) =>
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(value.toString()),
-                  )));
+              // await OAuthService.instance.signInWithGoogle().then((value) =>
+              //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //       content: Text(value.toString()),
+              //     )));
+              await OAuthStarva.instance.authenticate();
             },
             child: Text(
               'login'.tr(),
